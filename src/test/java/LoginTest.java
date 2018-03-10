@@ -10,26 +10,28 @@ import java.util.concurrent.TimeUnit;
 
 public class LoginTest {
     private WebDriver driver;
-    private String baseUrl = "http://demo.testarena.pl/zaloguj";
+    private final static String URL = "http://demo.testarena.pl/zaloguj";
+    private final static String LOGIN = "administrator@testarena.pl";
+    private final static String PASSWORD = "sumXQQ72$L";
 
     @Before
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        driver.get(baseUrl);
+        driver.get(URL);
     }
 
     @Test
     public void shouldSuccessfullyLogin() throws Exception {
-        driver.findElement(By.id("email")).sendKeys("administrator@testarena.pl");
-        driver.findElement(By.id("password")).sendKeys("sumXQQ72$L");
+        driver.findElement(By.id("email")).sendKeys(LOGIN);
+        driver.findElement(By.id("password")).sendKeys(PASSWORD);
         driver.findElement(By.id("login")).click();
         Assert.assertTrue(driver.findElement(By.cssSelector("a[title='Wyloguj']")).isDisplayed());
     }
 
     @Test
     public void shouldNotSuccessfullyLoginWithWrongPassword() throws Exception {
-        driver.findElement(By.id("email")).sendKeys("administrator@testarena.pl");
+        driver.findElement(By.id("email")).sendKeys(LOGIN);
         driver.findElement(By.id("password")).sendKeys("wrongpwd");
         driver.findElement(By.id("login")).click();
         Assert.assertTrue(driver.findElement(By.id("login")).isDisplayed());
