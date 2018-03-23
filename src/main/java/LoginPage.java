@@ -4,39 +4,40 @@ import org.openqa.selenium.support.FindBy;
 
 public class LoginPage {
     private WebDriver driver;
-    private final static String URL = "http://demo.testarena.pl/zaloguj";
 
     @FindBy(id = "email")
-    private WebElement emailField;
+    WebElement emailTextField;
 
     @FindBy(id = "password")
-    private WebElement passwordField;
+    WebElement passwordTextField;
+
+    @FindBy(css = "#remember")
+    WebElement rememberCheckbox;
 
     @FindBy(id = "login")
-    private WebElement loginButton;
+    WebElement loginButton;
 
-
-    public LoginPage(WebDriver driver) {
+    public LoginPage(WebDriver driver){
         this.driver = driver;
     }
 
-    public void open() {
-        driver.get(URL);
+    public void open(){
+        driver.get("http://demo.testarena.pl/zaloguj");
     }
 
-    public void setEmail(String email) {
-        emailField.sendKeys(email);
+    public void setEmail(String email){
+        emailTextField.sendKeys(email);
     }
 
-    public void setPassword(String password) {
-        passwordField.sendKeys(password);
+    public void setPassword(String password){
+        passwordTextField.sendKeys(password);
     }
 
-    public void clickLoginButton() {
+    public void setRemember(){
+        rememberCheckbox.click();
+    }
+
+    public void clickLoginButton(){
         loginButton.click();
-    }
-
-    public Boolean isLoginButtonDisplayed() {
-        return loginButton.isDisplayed();
     }
 }

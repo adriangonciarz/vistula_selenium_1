@@ -5,17 +5,25 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 
 public class TestBase {
-    WebDriver driver = new FirefoxDriver();
-    LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
+    WebDriver driver;
+    LoginPage loginPage;
+    KokpitPage kokpitPage;
+    VersionsPage versionsPage;
+    AddNewVersionPage addNewVersionPage;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp(){
+        System.setProperty("webdriver.gecko.driver", "C:\\bin\\geckodriver.exe");
+        driver = new FirefoxDriver();
+        loginPage = PageFactory.initElements(driver, LoginPage.class);
+        kokpitPage = PageFactory.initElements(driver, KokpitPage.class);
+        versionsPage = PageFactory.initElements(driver, VersionsPage.class);
+        addNewVersionPage = PageFactory.initElements(driver, AddNewVersionPage.class);
         loginPage.open();
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void close(){
         driver.quit();
     }
-
 }

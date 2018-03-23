@@ -1,21 +1,21 @@
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class LoginTest extends TestBase {
-    private final static String LOGIN = "administrator@testarena.pl";
-    private final static String PASSWORD = "sumXQQ72$L";
+import java.util.ArrayList;
+import java.util.List;
 
-
+public class LoginTest extends TestBase{
     @Test
-    public void shouldSuccessfullyLogin() throws Exception {
-        loginPage.setEmail(LOGIN);
-        loginPage.setPassword(PASSWORD);
+    public void successfulLogin() throws Exception{
+        loginPage.setEmail("administrator@testarena.pl");
+        loginPage.setPassword("sumXQQ72$L");
+        loginPage.setRemember();
+        Thread.sleep(3000);
         loginPage.clickLoginButton();
-    }
-
-    @Test
-    public void shouldNotSuccessfullyLoginWithWrongPassword() throws Exception {
-        loginPage.setEmail(LOGIN);
-        loginPage.setPassword("worngpwd");
-        loginPage.clickLoginButton();
+        kokpitPage.clickLogoutButton();
     }
 }
