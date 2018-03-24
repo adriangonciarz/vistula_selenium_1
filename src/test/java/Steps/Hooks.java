@@ -19,7 +19,7 @@ public class Hooks extends TestBase{
 
     @Before
     public void setUp(){
-//        System.setProperty("webdriver.gecko.driver", "C:\\bin\\geckodriver.exe");
+        System.setProperty("webdriver.gecko.driver", "C:\\bin\\geckodriver.exe");
         base.driver = new FirefoxDriver();
         base.loginPage = PageFactory.initElements(base.driver, LoginPage.class);
         base.kokpitPage = PageFactory.initElements(base.driver, KokpitPage.class);
