@@ -44,4 +44,9 @@ public class LoginStep extends TestBase{
         int waitMs = seconds * 1000;
         Thread.sleep(waitMs);
     }
+
+    @Then("^I should not be logged in$")
+    public void iShouldNotBeLoggedIn() throws Throwable {
+        Assert.assertTrue(base.loginPage.loginButtonIsVisible());
+    }
 }
