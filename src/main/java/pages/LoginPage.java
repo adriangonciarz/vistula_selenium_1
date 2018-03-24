@@ -1,3 +1,5 @@
+package pages;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -39,5 +41,9 @@ public class LoginPage {
 
     public void clickLoginButton(){
         loginButton.click();
+    }
+
+    public Boolean loginButtonIsVisible(){
+        return loginButton.isDisplayed();
     }
 }
