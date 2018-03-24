@@ -1,3 +1,5 @@
+package pages;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,5 +24,9 @@ public class KokpitPage {
 
     public void goToVersions(){
         versionsMenuButton.click();
+    }
+
+    public Boolean logoutButtonIsVisible(){
+        return logoutButton.isDisplayed();
     }
 }
